@@ -22,6 +22,8 @@ namespace LinkedList
                 numbers.AddNode(i);
             }
 
+            numbers.DeleteNode(100);
+
             numbers.TraverseList();
 
             Console.ReadKey();

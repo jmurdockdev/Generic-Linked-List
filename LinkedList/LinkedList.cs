@@ -12,6 +12,7 @@ namespace LinkedList
             this.head = new Node(null);
         }
 
+
         public void AddNode(object data)
         {
 
@@ -29,20 +30,19 @@ namespace LinkedList
 
                 while (temp.next != null)
                 {
-
                     temp = temp.next;
-
                 }
-
                 temp.next = node;
-
             }
-
         }
 
 
-        public void RemoveNode(Node node)
+        public void DeleteNode(object data)
         {
+
+            try
+            {
+
 
             if (head.next == null)
             {
@@ -50,27 +50,43 @@ namespace LinkedList
             }
 
 
-            Node temp = head;
+            Node nodeToDelete = Find(data);
 
-            while (temp.next != null)
-            {
-
-                if (temp.next == node)
+                if (nodeToDelete == null)
                 {
-                    temp.next = node.next;
-                    node = null;
-                    break;
+                    ArgumentNullException e = new ArgumentNullException();
+                    throw e;
                 }
                 else
                 {
 
-                    temp = temp.next;
+                    Node temp = head;
+
+                    while (temp.next != null)
+                    {
+                        if(temp.next == nodeToDelete)
+                        {
+
+                            temp.next = temp.next.next;
+
+                        }
+                        else
+                        {
+                            temp = temp.next;
+                        }
+
+                    }
+
+
 
                 }
+            
+
+            } catch ( ArgumentNullException e) {
+
+                Console.WriteLine(e.Message);
 
             }
-
-
         }
 
 
@@ -85,11 +101,43 @@ namespace LinkedList
                 Console.WriteLine(temp.Data);
             }
 
-
         }
 
 
+        private Node Find(object data)
+        {
+            if (head.next == null)
+            {
+                //Console.WriteLine("Linked List is Empty");
+                return null;
+            }
+            else
+            {
 
+                Node temp = head.next;
+
+                while (temp.next != null)
+                {
+                    if (temp.Data.Equals(data))
+                    {
+
+                        return temp;
+
+                    }
+                    else
+                    {
+
+                        temp = temp.next;
+
+                    }
+
+                }
+
+                return null;
+
+                }
+        
+            }
     }
 
 }
