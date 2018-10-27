@@ -54,7 +54,7 @@ namespace LinkedList
 
                 if (nodeToDelete == null)
                 {
-                    ArgumentNullException e = new ArgumentNullException();
+                    ArgumentNullException e = new ArgumentNullException(data.ToString() + " is not in the Linked List");
                     throw e;
                 }
                 else
@@ -68,6 +68,8 @@ namespace LinkedList
                         {
 
                             temp.next = temp.next.next;
+                            Console.WriteLine( data.ToString() +  " deleted");
+                            break;
 
                         }
                         else
@@ -116,19 +118,15 @@ namespace LinkedList
 
                 Node temp = head.next;
 
-                while (temp.next != null)
+                while (temp != null)
                 {
                     if (temp.Data.Equals(data))
                     {
-
                         return temp;
-
                     }
                     else
                     {
-
                         temp = temp.next;
-
                     }
 
                 }
@@ -137,7 +135,7 @@ namespace LinkedList
 
                 }
         
-            }
+         }
     }
 
 }

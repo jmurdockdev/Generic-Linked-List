@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LinkedList
 {
@@ -22,8 +19,9 @@ namespace LinkedList
                 numbers.AddNode(i);
             }
 
-            numbers.DeleteNode(100);
-
+            numbers.DeleteNode(8);
+            numbers.DeleteNode(9);
+            numbers.DeleteNode(9);
             numbers.TraverseList();
 
             Console.ReadKey();
